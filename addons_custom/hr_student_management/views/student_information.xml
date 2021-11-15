@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Top menu item -->
+        <menuitem id="student_menu"
+            name="Student"
+            parent="hr_sms.school_menu_root"
+            action="action_student_information"
+            sequence="2"/>
+
+        <record id="student_information_list_view" model="ir.ui.view">
+            <field name="name">Student Information List</field>
+            <field name="model">student.information</field>
+            <field name="arch" type="xml">
+                <tree string="Danh sach hoc sinh">
+                    <field name="name" optional="show"/>
+                    <field name="dateOfBirth" optional="show"/>
+                    <field name="class_id" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="student_information_form_view" model="ir.ui.view">
+            <field name="name">Student Information Form</field>
+            <field name="model">student.information</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="dateOfBirth"/>
+                            <field name="class_id"/>
+                        </group>
+                        <group>
+                            <field name="subject_list" optional="show">
+
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+<!--        Action-->
+        <record id="action_student_information" model="ir.actions.act_window">
+            <field name="name">Student Information Action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">student.information</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Add a new student!
+              </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

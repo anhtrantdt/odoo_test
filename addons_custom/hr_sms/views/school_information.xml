@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Top menu item -->
+        <menuitem id="school_menu_root"
+            name="School"
+            sequence="7"/>
+
+        <menuitem id="school_menu"
+            name="School Information"
+            parent="school_menu_root"
+            action="action_school_information"
+            sequence="2"/>
+
+        <record id="school_information_list_view" model="ir.ui.view">
+            <field name="name">School Information List</field>
+            <field name="model">school.information</field>
+            <field name="arch" type="xml">
+                <tree string="Danh sach truong">
+                    <field name="name" optional="show"/>
+                    <field name="type" optional="show"/>
+                    <field name="email" optional="show"/>
+                    <field name="address" optional="show"/>
+                    <field name="phoneNo" optional="show"/>
+                    <field name="hasOnlineClass" optional="show"/>
+                    <field name="rank" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="school_information_form_view" model="ir.ui.view">
+            <field name="name">School Information Form</field>
+            <field name="model">school.information</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" string="Ten truong" class="oe_edit_only"/>
+                            <h1><field name="name" placeholder="VD: THPT ABC"/></h1>
+                        </div>
+                        <group name="images">
+                            <group>
+                                <field name="type"/>
+                                <field name="email"/>
+                            </group>
+                            <group>
+                                <field name="phoneNo"/>
+                                <field name="establishDay"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="general_information" string="Thong tin chung">
+								<group>
+									<group>
+										<field name="rank"/>
+									</group>
+									<group>
+										<label for="address" string="Dia chi" colspan="2"/>
+										<field name="address" colspan="2" nolabel="1"/>
+									</group>
+                                    <group string="Tai lieu">
+                                        <field name="document"/>
+                                    </group>
+								</group>
+							</page>
+							<page name="class_list_information" string="Cac lop hoc">
+                                <group>
+                                    <field name="class_list" optional="show">
+<!--                                        <tree>-->
+<!--                                            <field name="name" optional="show"/>-->
+<!--                                            <field name="grade" optional="show"/>-->
+<!--                                            <field name="mainTeacher" optional="show"/>-->
+<!--                                        </tree>-->
+<!--                                        <form>-->
+<!--                                            <field name="name" optional="show"/>-->
+<!--                                            <field name="grade" optional="show"/>-->
+<!--                                            <field name="mainTeacher" optional="show"/>-->
+<!--                                        </form>-->
+                                    </field>
+                                </group>
+							</page>
+						</notebook>
+                    </sheet>
+
+
+<!--                    <sheet>-->
+<!--                        <group>-->
+<!--                            <field name="name"/>-->
+<!--                            <field name="type"/>-->
+<!--                            <field name="email"/>-->
+<!--                            <field name="address"/>-->
+<!--                            <field name="phoneNo"/>-->
+<!--                            <field name="hasOnlineClass"/>-->
+<!--                            <field name="rank"/>-->
+<!--                            <field name="establishDay"/>-->
+<!--                        </group>-->
+<!--                        <group>-->
+<!--                            <field name="document" filename="document_name"/>-->
+<!--                            <field name="document_name" invisible="1"/>-->
+<!--                        </group>-->
+<!--                    </sheet>-->
+                </form>
+            </field>
+        </record>
+
+<!--        Action-->
+        <record id="action_school_information" model="ir.actions.act_window">
+            <field name="name">School Information Action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">school.information</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a new school!
+              </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

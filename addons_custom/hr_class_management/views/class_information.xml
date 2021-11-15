@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Top menu item -->
+        <menuitem id="class_menu"
+            name="Class"
+            parent="hr_sms.school_menu_root"
+            action="action_class_information"
+            sequence="2"/>
+
+        <record id="class_information_list_view" model="ir.ui.view">
+            <field name="name">Class Information List</field>
+            <field name="model">class.information</field>
+            <field name="arch" type="xml">
+                <tree string="Danh sach lop hoc">
+                    <field name="name" optional="show"/>
+                    <field name="grade" optional="show"/>
+                    <field name="mainTeacher" optional="show"/>
+                    <field name="schoolID" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="class_information_form_view" model="ir.ui.view">
+            <field name="name">Class Information Form</field>
+            <field name="model">class.information</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="grade"/>
+                            <field name="mainTeacher"/>
+                            <field name="schoolID"/>
+                        </group>
+                        <group>
+                            <field name="student_list" optional="show">
+
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+<!--        Action-->
+        <record id="action_class_information" model="ir.actions.act_window">
+            <field name="name">Class Information Action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">class.information</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a new class!
+              </p>
+            </field>
+        </record>
+    </data>
+</odoo>
